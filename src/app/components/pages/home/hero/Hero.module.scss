@@ -1,0 +1,67 @@
+@import '../../../../styles/variables.scss';
+
+.hero {
+  margin-top: 50px;
+  @include sm-down {
+    margin-top: 70px;
+  }
+  @include xs-down {
+    margin-top: 100px;
+  }
+}
+
+.title {
+  font-size: 130px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -1.3px;
+  text-transform: uppercase;
+  @include sm-down {
+    font-size: 80px;
+    letter-spacing: -0.8px;
+  }
+  @include xs-down {
+    font-size: 48px;
+    letter-spacing: -0.48px;
+  }
+}
+.text {
+  margin-top: 24px;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 125%;
+  max-width: 708px;
+  letter-spacing: 0.64px;
+  @include sm-down {
+    font-size: 28px;
+  }
+  @include xs-down {
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    line-height: 125%;
+  }
+}
+
+.wrapper {
+  margin-top: 270px;
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+  @include xs-down {
+    margin-top: 76px;
+  }
+}
+.ai-text {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.48px;
+  @include sm-down {
+    font-size: 36px;
+    letter-spacing: -0.36px;
+  }
+  @include xs-down {
+    letter-spacing: -0.24px;
+    font-size: 24px;
+  }
+}
