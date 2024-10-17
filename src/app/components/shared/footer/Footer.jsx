@@ -29,13 +29,16 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        <iframe
-          src="https://my.spline.design/orb-8299981a83a774fdca6cd088c20d3d69/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          style={{ minHeight: '500px' }}
-        ></iframe>
+        <div className={cx('iframe-container')}>
+          <iframe
+            className={cx('iframe')}
+            src="https://my.spline.design/orb-8299981a83a774fdca6cd088c20d3d69/"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+            style={{ minHeight: '500px' }}
+          ></iframe>
+        </div>
       </div>
     </footer>
   );

@@ -2,25 +2,35 @@
 
 .footer {
   padding-top: 72px;
+  padding-bottom: 500px;
   border-radius: 64px 64px 0px 0px;
   margin-top: 200px;
   box-shadow:
     0px -44px 160px 32px rgba(78, 2, 195, 0.64),
     0px -32px 250px 120px #2622a8;
+
+  @include sm-down {
+    padding-top: 0;
+    padding-bottom: 300px;
+  }
 }
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include sm-down {
+    padding-top: 30px;
+  }
 }
 .list {
   display: flex;
   align-items: center;
-  justify-content: center;
-  column-gap: 32px;
+  justify-content: space-between;
+  column-gap: 64px;
 
-  @include sm-down {
-    display: none;
+  @include xs-down {
+    flex-direction: column;
+    text-align: right;
   }
 }
 
@@ -28,7 +38,24 @@
   font-size: 22px;
   color: $color-white;
   padding: 8px 16px;
+  @include sm-down {
+    font-size: 18px;
+  }
 }
 .spline-watermark {
   display: none;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  margin-top: -100px;
+}
+
+.iframe {
+  position: absolute;
+  height: 100%;
+  min-width: 100%;
+  border: none; /* Optional: Removes the border */
 }
