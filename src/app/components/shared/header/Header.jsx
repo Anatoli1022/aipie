@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from './images/logo.svg';
+import logo from '../../assets/logo.svg';
 import arrow from './images/arrow.svg';
 
 const cx = classNames.bind(styles);
