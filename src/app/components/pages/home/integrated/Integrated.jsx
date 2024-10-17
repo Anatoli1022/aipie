@@ -5,7 +5,7 @@ import viber from './images/viber.png';
 import mail from './images/mail.png';
 import message from './images/message.png';
 import sms from './images/sms.png';
-import instagram from './images/instagram.png';
+import instagram from './images/Instagram.png';
 import telegram from './images/telegram.png';
 
 const cx = classNames.bind(styles);
