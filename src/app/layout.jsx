@@ -1,5 +1,6 @@
 import localFont from 'next/font/local';
 import './styles/main.scss';
+import Header from './components/shared/header/Header';
 
 const geistSans = localFont({
   src: [
@@ -60,7 +61,10 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body className={geistSans.className}>{children}</body>
+      <body className={geistSans.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

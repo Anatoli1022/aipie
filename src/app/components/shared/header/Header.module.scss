@@ -1,0 +1,63 @@
+@import '../../../styles/variables.scss';
+
+.header {
+  padding: 48px 64px 24px 64px;
+  border-bottom: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+
+  @include sm-down {
+    padding: 36px 24px 24px 24px;
+  }
+
+  @include xs-down {
+    padding: 28px 12px 16px 12px;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 32px;
+
+  @include sm-down {
+    display: none;
+  }
+}
+
+.list-link {
+  font-size: 22px;
+  color: $color-white;
+  padding: 8px 16px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+  padding: 16px 24px 14px 16px;
+  border-radius: 100px;
+  border: 1px solid #f9f9f9;
+  background: #010101;
+  color: $color-white;
+  font-size: 22px;
+  font-weight: 500;
+  max-height: 72px;
+  @include xs-down {
+    font-size: 12px;
+    column-gap: 6px;
+    padding: 12px 18px 12px 8px;
+  }
+}
+
+.button-text {
+  margin-bottom: -4px;
+}
