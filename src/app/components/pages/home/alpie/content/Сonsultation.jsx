@@ -31,22 +31,24 @@ const Сonsultation = () => {
   ];
 
   useEffect(() => {
+    const currentSectionRef = sectionRef.current; // Copy ref value here
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setIsSectionVisible(true);
         }
       },
-      { threshold: 0.5 }, // Секция должна быть видна на 50%
+      { threshold: 0.5 },
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef);
       }
     };
   }, []);
@@ -57,16 +59,16 @@ const Сonsultation = () => {
       const intervalId = setInterval(() => {
         if (messageIndex < messageQueue.length - 1) {
           setMessages((prev) => [...prev, messageQueue[messageIndex]]);
-
           messageIndex++;
         } else {
           clearInterval(intervalId);
         }
-      }, 1500); // Сообщения отправляются с интервалом в 1 секунду
+      }, 1500);
 
       return () => clearInterval(intervalId);
     }
-  }, [isSectionVisible]);
+  }, [isSectionVisible, messageQueue, messages.length]);
+
   useEffect(() => {
     if (messageListRef.current) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
