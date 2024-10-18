@@ -18,7 +18,6 @@ const Automates = () => {
             <iframe
               className={cx('iframe')}
               src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
-              frameBorder="0"
               width="100%"
               height="100%"
               style={{ minHeight: '500px' }}
@@ -64,7 +63,7 @@ const Automates = () => {
           <li className={cx('item')}>
             <Image src={show} alt="" loading="lazy" aria-hidden="true" />
             <p className={cx('item-text')}>Сравнение товаров</p>
-          </li>{' '}
+          </li>
           <li className={cx('item')}>
             <Image src={investing} alt="" loading="lazy" aria-hidden="true" />
             <p className={cx('item-text')}>Интеграция с crm</p>

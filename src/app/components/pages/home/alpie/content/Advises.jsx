@@ -12,12 +12,11 @@ const Advises = () => {
     <div className={cx('content-wrapper')}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
-          <h3 className={cx('title-form')}>Aipie</h3>{' '}
+          <h3 className={cx('title-form')}>Aipie</h3>
           <div className={cx('iframe-container')}>
             <iframe
               className={cx('iframe')}
               src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
-              frameBorder="0"
               width="100%"
               height="100%"
               style={{ minHeight: '500px' }}
@@ -35,7 +34,8 @@ const Advises = () => {
                 src={arrowButton}
                 alt=""
                 loading="lazy"
-                aria-hidden="true"    className={cx('button-image')}
+                aria-hidden="true"
+                className={cx('button-image')}
               />
             </button>
           </form>
