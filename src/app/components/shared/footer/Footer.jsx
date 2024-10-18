@@ -46,11 +46,10 @@ const Footer = () => {
           aria-hidden="true"
           loading="lazy"
         /> */}
-       
       </div>
       <div className={cx('copyright')}>
-          *Meta Platforms Inc. признана в РФ экстремистской
-        </div>
+        *Meta Platforms Inc. признана в РФ экстремистской
+      </div>
     </footer>
   );
 };
