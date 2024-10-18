@@ -1,10 +1,12 @@
 @import '../../../styles/variables.scss';
 
 .footer {
-  padding-top: 72px;
+  // if you need 3d
   padding-bottom: 500px;
-  overflow: hidden;
   position: relative;
+  padding-top: 72px;
+  overflow: hidden;
+  // padding-bottom: 30px;
   border-radius: 64px 64px 0px 0px;
   margin-top: 200px;
   box-shadow:
@@ -15,6 +17,10 @@
     padding-top: 0;
     padding-bottom: 300px;
   }
+}
+
+.container-footer {
+  position: relative;
 }
 .navigation {
   display: flex;
@@ -51,6 +57,7 @@
   display: none;
 }
 
+// if you need 3d
 .iframe-container {
   position: relative;
   width: 100%;
@@ -63,16 +70,25 @@
   height: 100%;
   min-width: 100%;
   border: none;
+  z-index: -1;
 }
 
+// .background {
+//   position: absolute;
+//   width: 100%;
+//   z-index: -1;
+//   min-height: 100%;
+// }
 .copyright {
+  // if you need 3d
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 64px;
+  // margin-top: 500px;
   font-size: 22px;
   color: rgba(255, 255, 255, 0.32);
   letter-spacing: -0.33px;
-
+  z-index: 2;
   @include md-down {
     font-size: 18px;
 

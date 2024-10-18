@@ -3,12 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Footer.module.scss';
 import logo from '../../assets/logo.svg';
-
+// import background from '../../assets/background-footer.webp';
 const cx = classNames.bind(styles);
 const Footer = () => {
   return (
     <footer className={cx('footer')}>
-      <div className={cx('container')}>
+      <div className={cx('container', 'container-footer')}>
         <nav className={cx('navigation')}>
           <Image src={logo} alt="" aria-hidden="true" loading="lazy" />
           <ul className={cx('list')}>
@@ -29,20 +29,28 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
+        {/*  if you need 3d  */}
         <div className={cx('iframe-container')}>
           <iframe
             className={cx('iframe')}
             src="https://my.spline.design/orb-8299981a83a774fdca6cd088c20d3d69/"
-            frameBorder="0"
             width="100%"
             height="100%"
             style={{ minHeight: '610px' }}
           ></iframe>
         </div>
-        <div className={cx('copyright')}>
+        {/* <Image
+          src={background}
+          className={cx('background')}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        /> */}
+       
+      </div>
+      <div className={cx('copyright')}>
           *Meta Platforms Inc. признана в РФ экстремистской
         </div>
-      </div>
     </footer>
   );
 };
