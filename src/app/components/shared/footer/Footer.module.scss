@@ -3,6 +3,8 @@
 .footer {
   padding-top: 72px;
   padding-bottom: 500px;
+  overflow: hidden;
+  position: relative;
   border-radius: 64px 64px 0px 0px;
   margin-top: 200px;
   box-shadow:
@@ -18,6 +20,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
   @include md-down {
     padding-top: 30px;
   }
@@ -30,7 +34,8 @@
 
   @include sm-down {
     flex-direction: column;
-    text-align: right;
+    align-items: end;
+    row-gap: 26px;
   }
 }
 
@@ -57,5 +62,25 @@
   position: absolute;
   height: 100%;
   min-width: 100%;
-  border: none; /* Optional: Removes the border */
+  border: none;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 40px;
+  left: 64px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: -0.33px;
+
+  @include md-down {
+    font-size: 18px;
+
+    letter-spacing: -0.27px;
+  }
+  @include sm-down {
+    font-size: 16px;
+    max-width: 200px;
+    letter-spacing: -0.24px;
+  }
 }

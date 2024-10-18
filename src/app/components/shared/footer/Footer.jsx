@@ -36,8 +36,11 @@ const Footer = () => {
             frameBorder="0"
             width="100%"
             height="100%"
-            style={{ minHeight: '500px' }}
+            style={{ minHeight: '610px' }}
           ></iframe>
+        </div>
+        <div className={cx('copyright')}>
+          *Meta Platforms Inc. признана в РФ экстремистской
         </div>
       </div>
     </footer>

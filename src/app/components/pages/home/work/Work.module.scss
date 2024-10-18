@@ -2,26 +2,41 @@
 
 .work {
   margin-top: 250px;
+
   @include md-down {
     margin-top: 100px;
+    padding-bottom: 451px;
   }
   @include sm-down {
-    margin-top: 80px;
+    padding-bottom: 400px;
   }
 }
 
 .wrapper {
   display: flex;
-  overflow: hidden;
+  position: relative;
+
   justify-content: space-between;
 }
 
-// .triagle {
-//   position: absolute;
-//   right: 400px;
-//   top: 600px;
-//   z-index: -1;
-// }
+.triagle {
+  position: absolute;
+  right: 0;
+  bottom: -440px;
+  mix-blend-mode: color-dodge;
+  z-index: -1;
+  @include md-down {
+    max-width: 540px;
+    left: -60px;
+    right: 0;
+    max-height: 690px;
+    margin: auto;
+    bottom: -640px;
+  }
+  @include sm-down {
+    bottom: -540px;left: -130px;
+  }
+}
 
 .title {
   font-size: 64px;
@@ -98,4 +113,11 @@
   @include sm-down {
     margin-top: 8px;
   }
+}
+.background-third {
+  position: absolute;
+  filter: blur(350px);
+  top: -200px;
+  z-index: -3;
+  right: -140px;
 }

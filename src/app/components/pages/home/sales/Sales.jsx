@@ -6,7 +6,7 @@ import image2 from './images/image_2.png';
 import image3 from './images/image_3.png';
 import background from './images/background.png';
 import backgroundSecond from './images/background-second.svg';
-import backgroundThird from './images/background-third.svg';
+import backgroundThird from '../../../assets/background-third.svg';
 const cx = classNames.bind(styles);
 
 const Sales = () => {

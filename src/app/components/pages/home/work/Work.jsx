@@ -2,8 +2,8 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import styles from './Work.module.scss';
 import pannel from './image/pannel.png';
-import triagle from './image/triagle.webp';
-
+import triagle from './image/triangle.webp';
+import backgroundThird from '../../../assets/background-third.svg';
 const cx = classNames.bind(styles);
 
 const Work = () => {
@@ -23,7 +23,7 @@ const Work = () => {
                   Моментально отвечает на сообщения
                 </p>
               </div>
-            </li>{' '}
+            </li>
             <li className={cx('item')}>
               <Image src={pannel} alt="" aria-hidden="true" loading="lazy" />
               <div>
@@ -57,14 +57,20 @@ const Work = () => {
             </li>
           </ul>
         </div>
-
-        {/* <Image
+        <Image
           className={cx('triagle')}
           src={triagle}
           alt=""
           aria-hidden="true"
           loading="lazy"
-        /> */}
+        />{' '}
+        <Image
+          src={backgroundThird}
+          className={cx('background-third')}
+          alt=""
+          loading="lazy"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );
