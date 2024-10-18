@@ -9,7 +9,8 @@ import mechanism from '../../../../assets/mechanism.svg';
 import arrowButton from '../../../../assets/arrowButton.svg';
 
 const cx = classNames.bind(styles);
-const Сonsultation = () => {
+
+const Consultation = () => {
   const [messages, setMessages] = useState([]);
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -24,7 +25,6 @@ const Сonsultation = () => {
         sender: 'bot-message',
         text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?',
       },
-
       {
         sender: 'send-message',
         text: 'Нужен стул для длительного сидения, чтобы спина не болела',
@@ -77,6 +77,7 @@ const Сonsultation = () => {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
     }
   }, [messages]);
+
   return (
     <div className={cx('content-wrapper')} ref={sectionRef}>
       <div className={cx('wrapper')}>
@@ -151,4 +152,4 @@ const Сonsultation = () => {
   );
 };
 
-export default Сonsultation;
+export default Consultation; 
