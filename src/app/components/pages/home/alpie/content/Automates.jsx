@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -15,21 +15,23 @@ const Automates = () => {
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const sectionRef = useRef(null);
   const messageListRef = useRef(null);
-  const messageQueue = [
-    {
-      sender: 'send-message',
-      text: 'Нужен насос для подвала, глубина 3 метра, до 500 литров воды.',
-    },
-    {
-      sender: 'bot-message',
-      text: 'Добрый день, понял. Для таких объемов подойдет дренажный насос мощностью около 500 Вт с производительностью 8000 л/ч. Какие-то доп. функции нужны?',
-    },
-
-    {
-      sender: 'send-message',
-      text: 'Желательно, чтобы был автоматический выключатель, когда вода откачана.',
-    },
-  ];
+  const messageQueue = useMemo(
+    () => [
+      {
+        sender: 'send-message',
+        text: 'Нужен насос для подвала, глубина 3 метра, до 500 литров воды.',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Добрый день, понял. Для таких объемов подойдет дренажный насос мощностью около 500 Вт с производительностью 8000 л/ч. Какие-то доп. функции нужны?',
+      },
+      {
+        sender: 'send-message',
+        text: 'Желательно, чтобы был автоматический выключатель, когда вода откачана.',
+      },
+    ],
+    [],
+  );
 
   useEffect(() => {
     const currentSectionRef = sectionRef.current; // Copy ref value here
