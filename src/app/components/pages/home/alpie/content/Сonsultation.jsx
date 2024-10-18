@@ -53,7 +53,7 @@ const Сonsultation = () => {
 
   useEffect(() => {
     if (isSectionVisible) {
-      let messageIndex = 0;
+      let messageIndex = messages.length - 1;
       const intervalId = setInterval(() => {
         if (messageIndex < messageQueue.length - 1) {
           setMessages((prev) => [...prev, messageQueue[messageIndex]]);
@@ -116,10 +116,8 @@ const Сonsultation = () => {
               </div>
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg, index) => (
-              <span key={index} className={cx(msg.sender)}>
-                {msg.text}
-              </span>
+            {messages.map((msg) => (
+              <span className={cx(`${msg?.sender}`)}>{msg?.text}</span>
             ))}
           </div>
 
