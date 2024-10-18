@@ -2,11 +2,10 @@
 
 .sales {
   margin-top: 100px;
-
+  position: relative;
+  z-index: 1;
   @include md-down {
     margin-top: 30px;
-    position: relative;
-    z-index: 1;
   }
   @include sm-down {
     margin-top: 10px;

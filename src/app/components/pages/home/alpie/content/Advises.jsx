@@ -1,3 +1,5 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -7,29 +9,118 @@ import lightning from '../../../../assets/lightning.svg';
 import arrowButton from '../../../../assets/arrowButton.svg';
 
 const cx = classNames.bind(styles);
+
 const Advises = () => {
+  const [messages, setMessages] = useState([]);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
+  const sectionRef = useRef(null);
+  const messageListRef = useRef(null);
+  const messageQueue = [
+    {
+      sender: 'send-message',
+      text: 'Добрый день, хотел бы сделать возврат товара',
+    },
+    {
+      sender: 'bot-message',
+      text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
+    },
+    {
+      sender: 'option',
+      text: 'Витамин D3',
+      option: true,
+    },
+    {
+      sender: 'option',
+      text: 'Омега 3',
+    },
+    {
+      sender: 'bot-message',
+      text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
+    },
+    {
+      sender: 'send-message',
+      text: 'Отлично спасибо!',
+    },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsSectionVisible(true);
+        }
+      },
+      { threshold: 0.5 }, // Секция должна быть видна на 50%
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isSectionVisible) {
+      let messageIndex = 0;
+      const intervalId = setInterval(() => {
+        if (messageIndex < messageQueue.length - 1) {
+          setMessages((prev) => [...prev, messageQueue[messageIndex]]);
+
+          messageIndex++;
+        } else {
+          clearInterval(intervalId);
+        }
+      }, 1500); // Сообщения отправляются с интервалом в 1 секунду
+
+      return () => clearInterval(intervalId);
+    }
+  }, [isSectionVisible]);
+  useEffect(() => {
+    if (messageListRef.current) {
+      messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
-    <div className={cx('content-wrapper')}>
+    <div className={cx('content-wrapper')} ref={sectionRef}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
           <h3 className={cx('title-form')}>Aipie</h3>
-          <div className={cx('iframe-container')}>
-            <iframe
-              className={cx('iframe')}
-              src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
-              width="100%"
-              height="100%"
-              style={{ minHeight: '500px' }}
-            ></iframe>
+
+          {/* Блок переписки */}
+          <div className={cx('message-list')} ref={messageListRef}>
+            <div>
+              <div className={cx('iframe-container')}>
+                <iframe
+                  className={cx('iframe')}
+                  src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
+                  width="100%"
+                  height="100%"
+                  style={{ minHeight: '290px' }}
+                ></iframe>
+              </div>
+              <p className={cx('text-ai')}>Чем я могу помочь?</p>
+            </div>
+            {messages.map((msg, index) => (
+              <span key={index} className={cx(msg.sender)}>
+                {msg.text}
+              </span>
+            ))}
           </div>
-          <p className={cx('text-ai')}>Чем я могу помочь?</p>
-          <form action="">
+
+          <div className={cx('input-wrapper')}>
             <input
               type="text"
               placeholder="Сообщение"
               className={cx('input')}
+              disabled
             />
-            <button type="send" className={cx('button-form')}>
+            <button type="button" className={cx('button-form')} disabled>
               <Image
                 src={arrowButton}
                 alt=""
@@ -38,17 +129,15 @@ const Advises = () => {
                 className={cx('button-image')}
               />
             </button>
-          </form>
+          </div>
         </div>
       </div>
 
       <div className={cx('wrapper')}>
         <span className={cx('text')}>Техподдержка клиентов</span>
-        <h3 className={cx('title')}>
-          Автоматическая обработка 90% заявок
-        </h3>{' '}
+        <h3 className={cx('title')}>Автоматическая обработка 90% заявок</h3>
         <p className={cx('text-product')}>
-          AI-ассистент может довести клиента до завершения сделки, даже если
+          AI-ассистент может довести клиента до завершения сделки, даже если
           клиент перестал отвечать
         </p>
         <ul className={cx('list')}>
