@@ -9,7 +9,7 @@
     0px -44px 160px 32px rgba(78, 2, 195, 0.64),
     0px -32px 250px 120px #2622a8;
 
-  @include sm-down {
+  @include md-down {
     padding-top: 0;
     padding-bottom: 300px;
   }
@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include sm-down {
+  @include md-down {
     padding-top: 30px;
   }
 }
@@ -28,7 +28,7 @@
   justify-content: space-between;
   column-gap: 64px;
 
-  @include xs-down {
+  @include sm-down {
     flex-direction: column;
     text-align: right;
   }
@@ -38,7 +38,7 @@
   font-size: 22px;
   color: $color-white;
   padding: 8px 16px;
-  @include sm-down {
+  @include md-down {
     font-size: 18px;
   }
 }

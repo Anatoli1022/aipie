@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import styles from './Work.module.scss';
 import pannel from './image/pannel.png';
+import triagle from './image/triagle.webp';
 
 const cx = classNames.bind(styles);
 
@@ -57,7 +58,13 @@ const Work = () => {
           </ul>
         </div>
 
-        <div>3D</div>
+        {/* <Image
+          className={cx('triagle')}
+          src={triagle}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        /> */}
       </div>
     </section>
   );

@@ -1,0 +1,188 @@
+@import '../../../../styles/variables.scss';
+
+.sales {
+  margin-top: 100px;
+
+  @include md-down {
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  @include sm-down {
+    margin-top: 10px;
+  }
+}
+
+.sale-container {
+  position: relative;
+}
+
+.title {
+  font-size: 64px;
+  text-align: center;
+  line-height: 72px;
+  font-weight: 500;
+  max-width: 1000px;
+  margin: auto;
+  letter-spacing: 0.64px;
+  @include md-down {
+    font-size: 48px;
+    line-height: 54px;
+  }
+  @include sm-down {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.wrapper-content {
+  margin-top: 64px;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  @include md-down {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include sm-down {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.block {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #172c50;
+  background: rgba(15, 16, 33, 0.28);
+  backdrop-filter: blur(50px);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(odd) {
+    height: 564px;
+    row-gap: 24px;
+    position: relative;
+    justify-content: end;
+    @include md-down {
+      height: 488px;
+    }
+    @include sm-down {
+      height: 335px;
+    }
+  }
+  &:nth-child(even) {
+    height: 360px;
+
+    justify-content: space-between;
+    @include md-down {
+      height: 405px;
+    }
+    @include sm-down {
+      height: 288px;
+    }
+  }
+  &:nth-child(1) {
+    @include md-down {
+      order: 0;
+    }
+  }
+  &:nth-child(2) {
+    @include md-down {
+      order: 1;
+    }
+  }
+  &:nth-child(3) {
+    @include md-down {
+      order: 4;
+      margin-top: -80px;
+    }
+  }
+  &:nth-child(4) {
+    @include md-down {
+      order: 2;
+    }
+  }
+  &:nth-child(5) {
+    margin-top: -203px;
+    @include md-down {
+      margin-top: -80px;
+      order: 3;
+      height: 566px;
+    }
+    @include sm-down {
+      height: 335px;
+    }
+  }
+  &:nth-child(6) {
+    @include md-down {
+      order: 5;
+    }
+  }
+
+  @include sm-down {
+    order: 0 !important;
+    margin: 0 !important;
+  }
+}
+.title-block {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+  letter-spacing: 0.48px;
+  @include md-down {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  @include sm-down {
+    font-size: 24px;
+
+    line-height: 30px;
+  }
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.2px;
+  @include md-down {
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  filter: blur(350px);
+  bottom: 0;
+  z-index: -1;
+  right: 0;
+}
+
+.background-second {
+  z-index: -2;
+  position: absolute;
+
+  filter: blur(350px);
+  top: -500px;
+  left: 0;
+}
+.background-third {
+  position: absolute;
+
+  filter: blur(350px);
+  top: -200px;
+  z-index: -3;
+  right: -140px;
+}

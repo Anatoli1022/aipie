@@ -1,16 +1,21 @@
 @import '../../../styles/variables.scss';
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  right: 0;
   padding: 48px 64px 24px 64px;
   border-bottom: 1px solid #fff;
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(8px);
 
-  @include sm-down {
+  @include md-down {
     padding: 36px 24px 24px 24px;
   }
 
-  @include xs-down {
+  @include sm-down {
     padding: 28px 12px 16px 12px;
   }
 }
@@ -21,13 +26,23 @@
   align-items: center;
 }
 
+.logo {
+  @include md-down {
+    max-height: 34px;
+  }
+
+  @include sm-down {
+    max-height: 22px;
+  }
+}
+
 .list {
   display: flex;
   align-items: center;
   justify-content: center;
   column-gap: 32px;
 
-  @include sm-down {
+  @include md-down {
     display: none;
   }
 }
@@ -51,13 +66,22 @@
   font-size: 22px;
   font-weight: 500;
   max-height: 72px;
-  @include xs-down {
-    font-size: 12px;
-    column-gap: 6px;
-    padding: 12px 18px 12px 8px;
+  @include md-down {
+    display: none;
   }
 }
 
 .button-text {
   margin-bottom: -4px;
+}
+
+.menu {
+  display: none;
+  background: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @include md-down {
+    display: block;
+  }
 }

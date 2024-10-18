@@ -2,18 +2,26 @@
 
 .work {
   margin-top: 250px;
-  @include sm-down {
+  @include md-down {
     margin-top: 100px;
   }
-  @include xs-down {
+  @include sm-down {
     margin-top: 80px;
   }
 }
 
 .wrapper {
   display: flex;
+  overflow: hidden;
   justify-content: space-between;
 }
+
+// .triagle {
+//   position: absolute;
+//   right: 400px;
+//   top: 600px;
+//   z-index: -1;
+// }
 
 .title {
   font-size: 64px;
@@ -21,12 +29,12 @@
   font-weight: 500;
   line-height: 72px;
   letter-spacing: 0.64px;
-  @include sm-down {
+  @include md-down {
     font-size: 48px;
     line-height: 54px;
     letter-spacing: 0.48px;
   }
-  @include xs-down {
+  @include sm-down {
     line-height: 34px;
     font-size: 28px;
     letter-spacing: 0.28px;
@@ -40,7 +48,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 48px;
-  @include xs-down {
+  @include sm-down {
     margin-top: 40px;
     row-gap: 24px;
   }
@@ -49,10 +57,10 @@
 .item {
   display: flex;
   column-gap: 32px;
-  @include sm-down {
+  @include md-down {
     column-gap: 24px;
   }
-  @include xs-down {
+  @include sm-down {
     column-gap: 12px;
   }
 }
@@ -63,12 +71,12 @@
   font-weight: 400;
   line-height: 48px;
   letter-spacing: 0.38px;
-  @include sm-down {
+  @include md-down {
     font-size: 30px;
     line-height: 34px;
     letter-spacing: 0.3px;
   }
-  @include xs-down {
+  @include sm-down {
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.24px;
@@ -82,12 +90,12 @@
   font-size: 20px;
   line-height: 140%;
   letter-spacing: 0.2px;
-  @include sm-down {
+  @include md-down {
     font-size: 16px;
     line-height: 140%;
     letter-spacing: 0.16px;
   }
-  @include xs-down {
+  @include sm-down {
     margin-top: 8px;
   }
 }

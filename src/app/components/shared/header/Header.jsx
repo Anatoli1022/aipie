@@ -3,7 +3,8 @@ import styles from './Header.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../assets/logo.svg';
-import arrow from './images/arrow.svg';
+import arrow from '../../assets/arrow.svg';
+import menu from './images/menu.svg';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ const Header = () => {
             <Link href="/">
               <Image
                 src={logo}
-                className={cx('image')}
+                className={cx('logo')}
                 alt=""
                 loading="lazy"
                 aria-hidden="true"
@@ -43,14 +44,23 @@ const Header = () => {
           <button className={cx('button')} type="button">
             <Image
               src={arrow}
-              className={cx('image')}
               alt=""
               width={40}
               height={40}
-              loading="lazy"
+              loading="eager"
               aria-hidden="true"
             />
             <span className={cx('button-text')}>Попробовать Aipie</span>
+          </button>
+          <button className={cx('menu')}>
+            <Image
+              src={menu}
+              alt=""
+              width={42}
+              height={34}
+              loading="eager"
+              aria-hidden="true"
+            />
           </button>
         </nav>
       </div>
