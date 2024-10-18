@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -15,33 +15,36 @@ const Advises = () => {
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const sectionRef = useRef(null);
   const messageListRef = useRef(null);
-  const messageQueue = [
-    {
-      sender: 'send-message',
-      text: 'Добрый день, хотел бы сделать возврат товара',
-    },
-    {
-      sender: 'bot-message',
-      text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
-    },
-    {
-      sender: 'option',
-      text: 'Витамин D3',
-      option: true,
-    },
-    {
-      sender: 'option',
-      text: 'Омега 3',
-    },
-    {
-      sender: 'bot-message',
-      text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
-    },
-    {
-      sender: 'send-message',
-      text: 'Отлично спасибо!',
-    },
-  ];
+  const messageQueue = useMemo(
+    () => [
+      {
+        sender: 'send-message',
+        text: 'Добрый день, хотел бы сделать возврат товара',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
+      },
+      {
+        sender: 'option',
+        text: 'Витамин D3',
+        option: true,
+      },
+      {
+        sender: 'option',
+        text: 'Омега 3',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
+      },
+      {
+        sender: 'send-message',
+        text: 'Отлично спасибо!',
+      },
+    ],
+    [],
+  );
 
   useEffect(() => {
     const currentSectionRef = sectionRef.current; // Copy ref value here
@@ -108,8 +111,10 @@ const Advises = () => {
               </div>
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg) => (
-              <span className={cx(`${msg?.sender}`)}>{msg?.text}</span>
+            {messages.map((msg, index) => (
+              <span key={index} className={cx(`${msg?.sender}`)}>
+                {msg?.text}
+              </span>
             ))}
           </div>
 

@@ -97,8 +97,10 @@ const Automates = () => {
               </div>
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg) => (
-              <span className={cx(`${msg?.sender}`)}>{msg?.text}</span>
+            {messages.map((msg, index) => (
+              <span key={index} className={cx(`${msg?.sender}`)}>
+                {msg?.text}
+              </span>
             ))}
           </div>
 
