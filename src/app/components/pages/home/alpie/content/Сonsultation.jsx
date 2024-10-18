@@ -16,23 +16,22 @@ const Сonsultation = () => {
   const messageListRef = useRef(null);
   const messageQueue = useMemo(
     () => [
-    {
-      sender: 'send-message',
-      text: 'Хотел бы приобрести офисный стул',
-    },
-    {
-      sender: 'bot-message',
-      text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?',
-    },
+      {
+        sender: 'send-message',
+        text: 'Хотел бы приобрести офисный стул',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?',
+      },
 
-    {
-      sender: 'send-message',
-      text: 'Нужен стул для длительного сидения, чтобы спина не болела',
-    },
-  ],
-  [],
-);
-
+      {
+        sender: 'send-message',
+        text: 'Нужен стул для длительного сидения, чтобы спина не болела',
+      },
+    ],
+    [],
+  );
 
   useEffect(() => {
     const currentSectionRef = sectionRef.current; // Copy ref value here
