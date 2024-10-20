@@ -7,6 +7,7 @@
   padding-top: 72px;
   overflow: hidden;
   // padding-bottom: 30px;
+
   border-radius: 64px 64px 0px 0px;
   margin-top: 200px;
   box-shadow:
@@ -62,7 +63,7 @@
   color: $color-white;
   padding: 8px 16px;
   @include md-down {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 .spline-watermark {
@@ -83,6 +84,9 @@
   min-width: 100%;
   border: none;
   z-index: -1;
+  @include md-down {
+    margin-top: -50px;
+  }
 }
 
 // .background {
