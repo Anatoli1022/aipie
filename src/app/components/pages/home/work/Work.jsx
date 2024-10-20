@@ -58,7 +58,7 @@ const Work = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={cx('image-wrapper')}>
           <Image
             className={cx('triagle')}
             src={triagle}

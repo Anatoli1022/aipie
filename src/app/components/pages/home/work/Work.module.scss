@@ -13,8 +13,8 @@
   display: flex;
   position: relative;
   align-items: center;
-  overflow: hidden;
-  max-height: 784px;
+  // overflow: hidden;
+  // max-height: 820px;
   justify-content: space-between;
   @include lg-down {
     flex-direction: column;
@@ -25,15 +25,17 @@
 
 .image-wrapper {
   overflow: hidden;
+  max-height: 820px;
 }
 
 .triagle {
   max-width: 100%;
   mix-blend-mode: color-dodge;
   z-index: -1;
-  @include xl-down {
-    margin-bottom: -140px;
-  }
+  margin-top: -200px;
+  // @include xl-down {
+  //   margin-bottom: -140px;
+  // }
 
   @include lg-down {
     display: none;
@@ -78,7 +80,7 @@
   justify-content: space-between;
   row-gap: 48px;
   @include xl-down {
-    column-gap: 104px;
+    column-gap: 30px;
   }
   @include md-down {
     column-gap: 30px;
