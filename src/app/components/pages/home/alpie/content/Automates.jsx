@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -12,8 +13,9 @@ import arrowButton from '../../../../assets/arrowButton.svg';
 const cx = classNames.bind(styles);
 const Automates = () => {
   const [messages, setMessages] = useState([]);
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   const messageListRef = useRef(null);
   const messageQueue = useMemo(
     () => [
@@ -66,33 +68,11 @@ const Automates = () => {
   );
 
   useEffect(() => {
-    const currentSectionRef = sectionRef.current; // Copy ref value here
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsSectionVisible(true);
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    if (currentSectionRef) {
-      observer.observe(currentSectionRef);
-    }
-
-    return () => {
-      if (currentSectionRef) {
-        observer.unobserve(currentSectionRef);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isSectionVisible) {
-      let messageIndex = messages.length - 1;
+    if (inView) {
+      let messageIndex = messages.length;
+      //   console.log(messageIndex, 'насос');
       const intervalId = setInterval(() => {
-        if (messageIndex < messageQueue.length - 1) {
+        if (messageIndex < messageQueue.length) {
           setMessages((prev) => [...prev, messageQueue[messageIndex]]);
           messageIndex++;
         } else {
@@ -102,7 +82,7 @@ const Automates = () => {
 
       return () => clearInterval(intervalId);
     }
-  }, [isSectionVisible, messageQueue, messages.length]);
+  }, [inView, messageQueue, messages.length]);
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -110,7 +90,7 @@ const Automates = () => {
     }
   }, [messages]);
   return (
-    <div className={cx('content-wrapper')} ref={sectionRef}>
+    <div className={cx('content-wrapper')} ref={ref}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
           <h3 className={cx('title-form')}>Aipie</h3>

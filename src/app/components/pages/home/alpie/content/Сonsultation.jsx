@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -12,8 +13,10 @@ const cx = classNames.bind(styles);
 
 const Consultation = () => {
   const [messages, setMessages] = useState([]);
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const consultationRef = useRef(null);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
   const messageListRef = useRef(null);
   const messageQueue = useMemo(
     () => [
@@ -58,33 +61,11 @@ const Consultation = () => {
   );
 
   useEffect(() => {
-    const currentSectionRef = consultationRef.current; // Copy ref value here
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setIsSectionVisible(true);
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    if (currentSectionRef) {
-      observer.observe(currentSectionRef);
-    }
-
-    return () => {
-      if (currentSectionRef) {
-        observer.unobserve(currentSectionRef);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isSectionVisible) {
-      let messageIndex = messages.length - 1;
+    if (inView) {
+      let messageIndex = messages.length;
+      //  console.log(messageIndex, 'стул');
       const intervalId = setInterval(() => {
-        if (messageIndex < messageQueue.length - 1) {
+        if (messageIndex < messageQueue.length) {
           setMessages((prev) => [...prev, messageQueue[messageIndex]]);
           messageIndex++;
         } else {
@@ -94,7 +75,7 @@ const Consultation = () => {
 
       return () => clearInterval(intervalId);
     }
-  }, [isSectionVisible, messageQueue, messages.length]);
+  }, [inView, messageQueue, messages.length]);
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -103,7 +84,7 @@ const Consultation = () => {
   }, [messages]);
 
   return (
-    <div className={cx('content-wrapper')} ref={consultationRef}>
+    <div className={cx('content-wrapper')} ref={ref}>
       <div className={cx('wrapper')}>
         <span className={cx('text')}>Виджет на сайт</span>
         <h3 className={cx('title')}>Консультирует о товарах и услугах</h3>

@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import styles from './Styles.module.scss';
+import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 import manyStars from '../../../../assets/manyStars.svg';
@@ -12,8 +13,9 @@ const cx = classNames.bind(styles);
 
 const Advises = () => {
   const [messages, setMessages] = useState([]);
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const sectionAdvisesRef = useRef(null);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   const advisesRef = useRef(null);
   const messageQueue = useMemo(
     () => [
@@ -47,33 +49,11 @@ const Advises = () => {
   );
 
   useEffect(() => {
-    const currentSectionRef = sectionAdvisesRef.current; // Copy ref value here
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsSectionVisible(true);
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    if (currentSectionRef) {
-      observer.observe(currentSectionRef);
-    }
-
-    return () => {
-      if (currentSectionRef) {
-        observer.unobserve(currentSectionRef);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isSectionVisible) {
-      let messageIndex = messages.length - 1;
+    if (inView) {
+      let messageIndex = messages.length;
+      // console.log(messageIndex, 'возврат');
       const intervalId = setInterval(() => {
-        if (messageIndex < messageQueue.length - 1) {
+        if (messageIndex < messageQueue.length) {
           setMessages((prev) => [...prev, messageQueue[messageIndex]]);
           messageIndex++;
         } else {
@@ -83,7 +63,7 @@ const Advises = () => {
 
       return () => clearInterval(intervalId);
     }
-  }, [isSectionVisible, messageQueue, messages.length]);
+  }, [inView, messageQueue, messages.length]);
 
   useEffect(() => {
     if (advisesRef.current) {
@@ -92,7 +72,7 @@ const Advises = () => {
   }, [messages]);
 
   return (
-    <div className={cx('content-wrapper')} ref={sectionAdvisesRef}>
+    <div className={cx('content-wrapper')} ref={ref}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
           <h3 className={cx('title-form')}>Aipie</h3>
