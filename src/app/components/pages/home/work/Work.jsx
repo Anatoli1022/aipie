@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './Work.module.scss';
 import pannel from './image/pannel.png';
 import triagle from './image/triangle.webp';
+import triagleMobile from './image/triagleMobile.webp';
 import backgroundThird from '../../../assets/background-third.svg';
 const cx = classNames.bind(styles);
 
@@ -57,21 +58,30 @@ const Work = () => {
             </li>
           </ul>
         </div>
-        <Image
-          className={cx('triagle')}
-          src={triagle}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-        />{' '}
-        <Image
-          src={backgroundThird}
-          className={cx('background-third')}
-          alt=""
-          loading="lazy"
-          aria-hidden="true"
-        />
+        <div>
+          <Image
+            className={cx('triagle')}
+            src={triagle}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <Image
+            className={cx('triagle-mobile')}
+            src={triagleMobile}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+        </div>
       </div>
+      <Image
+        src={backgroundThird}
+        className={cx('background-third')}
+        alt=""
+        loading="lazy"
+        aria-hidden="true"
+      />
     </section>
   );
 };
