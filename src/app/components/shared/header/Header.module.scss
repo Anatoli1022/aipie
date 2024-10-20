@@ -12,11 +12,11 @@
   backdrop-filter: blur(8px);
 
   @include md-down {
-    padding: 36px 24px 24px 24px;
+    padding: 36px 0 24px 0;
   }
 
   @include sm-down {
-    padding: 28px 12px 16px 12px;
+    padding: 28px 0 16px 0;
   }
 }
 

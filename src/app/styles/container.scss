@@ -1,6 +1,15 @@
+@import './variables.scss';
 .container {
   max-width: 1920px;
   margin-left: auto;
-  padding: 0 20px;
+  padding: 0 24px 0 24px;
   margin-right: auto;
+
+  @include md-down {
+    padding: 0 20px 0 20px;
+  }
+
+  @include sm-down {
+    padding: 0 12px 0 12px;
+  }
 }
