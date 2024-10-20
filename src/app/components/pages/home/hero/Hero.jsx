@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import styles from './Hero.module.scss';
-import border from './images/border.png';
+import border from './images/border.webp';
 import arrow from '../../../assets/arrow.svg';
 const cx = classNames.bind(styles);
 
 const Hero = () => {
   return (
     <section className={cx('hero')}>
-      <div className={cx('container', 'hero-container')}>
+      <div className={cx('container')}>
         <div className={cx('wrapper-content')}>
           <h1 className={cx('title')}>Aipie</h1>
           <p className={cx('text')}>
@@ -43,7 +43,6 @@ const Hero = () => {
         <iframe
           className={cx('iframe')}
           src="https://my.spline.design/-f4ec32c28f52a6868167ac78ea55bb63/"
-          frameBorder="0"
           width="100%"
           height="100%"
           style={{ minHeight: '1000px' }}
