@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const Footer = () => {
   return (
     <footer className={cx('footer')}>
-      <div className={cx('container', 'container-footer')}>
+      <div className={cx('container-footer')}>
         <nav className={cx('navigation')}>
           <Image src={logo} alt="" aria-hidden="true" loading="lazy" />
           <ul className={cx('list')}>
