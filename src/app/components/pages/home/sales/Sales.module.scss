@@ -3,9 +3,10 @@
 .sales {
   margin-top: 100px;
   position: relative;
-  // z-index: 1;
+
   @include md-down {
-    margin-top: 30px;
+    margin-top: 30px; 
+    z-index: 1;
   }
   @include sm-down {
     margin-top: 10px;
@@ -156,6 +157,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  mix-blend-mode: color-dodge;
 }
 
 .background {
@@ -182,5 +184,5 @@
   filter: blur(350px);
   top: -200px;
   z-index: -3;
-  right: -140px;
+  right: 0px;
 }
