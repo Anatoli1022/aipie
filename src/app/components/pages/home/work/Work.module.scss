@@ -47,7 +47,7 @@
 
   @include lg-down {
     mix-blend-mode: color-dodge;
-    
+
     height: 100%;
     display: block;
   }
@@ -143,4 +143,10 @@
   right: 0;
   z-index: -3;
   top: -650px;
+
+  @include md-down {
+    right: -400px;
+
+    top: -400px;
+  }
 }
