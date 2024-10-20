@@ -1,15 +1,16 @@
 @import '../../../../styles/variables.scss';
 .alpie {
-  margin-top: 230px;
+  margin-top: 130px;
   @include md-down {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 }
 
 .title {
   font-size: 64px;
-  max-width: 800px;
+  max-width: 720px;
   font-weight: 500;
+  margin: auto;
   line-height: 72px;
   letter-spacing: 0.64px;
   @include md-down {
