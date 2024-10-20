@@ -2,6 +2,7 @@
 
 .integrated {
   margin-top: 196px;
+  overflow: hidden;
   @include md-down {
     margin-top: 90px;
   }
@@ -33,9 +34,8 @@
   }
 }
 
-
 .carousel-track {
-  animation: scroll 14s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 
 @keyframes scroll {
@@ -49,19 +49,18 @@
 
 .list {
   margin-top: 64px;
-  row-gap: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(14, 280px);
+  column-gap: 14px;
   justify-content: space-between;
   @include md-down {
-    .item:nth-child(n + 4) {
-      display: none;
-    }
+    grid-template-columns: repeat(14, 237px);
     margin-top: 40px;
+    column-gap: 28px;
   }
   @include sm-down {
-    .item:nth-child(n + 3) {
-      display: none;
-    }
+    column-gap: 24px;
+    grid-template-columns: repeat(14, 126px);
   }
 }
 
@@ -69,6 +68,9 @@
   display: flex;
   align-items: center;
   column-gap: 16px;
+  @include sm-down {
+    column-gap: 12px;
+  }
 }
 
 .image-wrapper {
@@ -84,26 +86,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include md-down {
+    padding: 21px;
+  }
   @include sm-down {
-    padding: 11px;
+    padding: 6px;
+    border-radius: 5px;
   }
 }
 
+.image {
+  @include sm-down {
+    width: 15px;
+    height: 15px;
+  }
+}
 .text {
   color: rgba(255, 255, 255, 0.8);
   font-size: 32px;
   line-height: 40px;
   letter-spacing: 0.32px;
+
   @include md-down {
     font-size: 28px;
     line-height: 40px;
   }
-  @include sm-down {
-    font-size: 20px;
-  }
-}
 
-.image {
-  width: 37px;
-  height: 37px;
+  @include sm-down {
+    font-size: 18px;
+  }
 }
