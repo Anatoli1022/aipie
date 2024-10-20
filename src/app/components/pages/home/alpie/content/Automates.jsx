@@ -9,6 +9,7 @@ import bag from '../../../../assets/bag.svg';
 import show from '../../../../assets/show.svg';
 import investing from '../../../../assets/investing.svg';
 import arrowButton from '../../../../assets/arrowButton.svg';
+import Ai from './Ai';
 
 const cx = classNames.bind(styles);
 const Automates = () => {
@@ -98,15 +99,7 @@ const Automates = () => {
           {/* Блок переписки */}
           <div className={cx('message-list')} ref={messageListRef}>
             <div>
-              <div className={cx('iframe-container')}>
-                <iframe
-                  className={cx('iframe')}
-                  src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
-                  width="100%"
-                  height="100%"
-                  style={{ minHeight: '290px' }}
-                ></iframe>
-              </div>
+              <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
             {messages.map((msg, index) => (
