@@ -10,7 +10,13 @@ const Footer = () => {
     <footer className={cx('footer')}>
       <div className={cx('container-footer')}>
         <nav className={cx('navigation')}>
-          <Image src={logo} alt="" aria-hidden="true" loading="lazy" />
+          <Image
+            src={logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className={cx('logo')}
+          />
           <ul className={cx('list')}>
             <li>
               <Link href="/" className={cx('list-link')}>

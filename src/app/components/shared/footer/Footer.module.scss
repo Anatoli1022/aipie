@@ -25,6 +25,15 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.logo {
+  @include md-down {
+    max-width: 123px;
+  }
+  @include sm-down {
+    max-width: 100px;
+  }
+}
 .navigation {
   display: flex;
   justify-content: space-between;
