@@ -18,8 +18,6 @@
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
-}
-.hero-container {
   position: relative;
   width: 100%;
 }
@@ -27,6 +25,7 @@
 .wrapper-content {
   position: relative;
   z-index: 2;
+  padding-left: 30px;
 }
 
 .title {
@@ -123,6 +122,7 @@
   top: -200px;
   position: absolute;
   z-index: 0;
+  border: none;
   transform: scale(1.6);
   height: 100%;
   min-width: 100%;
