@@ -13,8 +13,8 @@ const cx = classNames.bind(styles);
 const Advises = () => {
   const [messages, setMessages] = useState([]);
   const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const messageListRef = useRef(null);
+  const sectionAdvisesRef = useRef(null);
+  const advisesRef = useRef(null);
   const messageQueue = useMemo(
     () => [
       {
@@ -47,7 +47,7 @@ const Advises = () => {
   );
 
   useEffect(() => {
-    const currentSectionRef = sectionRef.current; // Copy ref value here
+    const currentSectionRef = sectionAdvisesRef.current; // Copy ref value here
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -79,26 +79,26 @@ const Advises = () => {
         } else {
           clearInterval(intervalId);
         }
-      }, 1500);
+      }, 3000);
 
       return () => clearInterval(intervalId);
     }
   }, [isSectionVisible, messageQueue, messages.length]);
 
   useEffect(() => {
-    if (messageListRef.current) {
-      messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+    if (advisesRef.current) {
+      advisesRef.current.scrollTop = advisesRef.current.scrollHeight;
     }
   }, [messages]);
 
   return (
-    <div className={cx('content-wrapper')} ref={sectionRef}>
+    <div className={cx('content-wrapper')} ref={sectionAdvisesRef}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
           <h3 className={cx('title-form')}>Aipie</h3>
 
           {/* Блок переписки */}
-          <div className={cx('message-list')} ref={messageListRef}>
+          <div className={cx('message-list')} ref={advisesRef}>
             <div>
               <div className={cx('iframe-container')}>
                 <iframe

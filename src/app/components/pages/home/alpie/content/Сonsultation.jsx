@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const Consultation = () => {
   const [messages, setMessages] = useState([]);
   const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const consultationRef = useRef(null);
   const messageListRef = useRef(null);
   const messageQueue = useMemo(
     () => [
@@ -29,16 +29,40 @@ const Consultation = () => {
         sender: 'send-message',
         text: 'Нужен стул для длительного сидения, чтобы спина не болела',
       },
+      {
+        sender: 'bot-message',
+        text: 'Ага, понял, тогда рекомендую нашу модель ErgoMaster Pro — она специально разработана для поддержки позвоночника при долгой работе. Кстати, к этой модели мы можем предложить подставку для ног с регулировкой, что обеспечит еще больший комфорт при долгом нахождении в кресле.',
+      },
+      {
+        sender: 'send-message',
+        text: 'Интересно. Сколько стоит подставка?',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Стоимость подставки всего 1500 рублей, и вкупе с креслом она идеально улучшит вашу рабочую эргономику. Если закажете прямо сейчас, я могу предложить вам скидку 10% на комплект.',
+      },
+      {
+        sender: 'send-message',
+        text: 'Здорово, а какие сроки доставки?',
+      },
+      {
+        sender: 'bot-message',
+        text: 'Мы можем доставить кресло и подставку уже на следующий день, если вы находитесь в Москве или в ближайшем Подмосковье. А если вы за пределами этих регионов, доставка займет от 2 до 5 дней.',
+      },
+      {
+        sender: 'send-message',
+        text: 'Отлично, беру кресло и подставку!',
+      },
     ],
     [],
   );
 
   useEffect(() => {
-    const currentSectionRef = sectionRef.current; // Copy ref value here
+    const currentSectionRef = consultationRef.current; // Copy ref value here
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0]?.isIntersecting) {
           setIsSectionVisible(true);
         }
       },
@@ -66,7 +90,7 @@ const Consultation = () => {
         } else {
           clearInterval(intervalId);
         }
-      }, 1500);
+      }, 3000);
 
       return () => clearInterval(intervalId);
     }
@@ -79,7 +103,7 @@ const Consultation = () => {
   }, [messages]);
 
   return (
-    <div className={cx('content-wrapper')} ref={sectionRef}>
+    <div className={cx('content-wrapper')} ref={consultationRef}>
       <div className={cx('wrapper')}>
         <span className={cx('text')}>Виджет на сайт</span>
         <h3 className={cx('title')}>Консультирует о товарах и услугах</h3>
