@@ -333,6 +333,7 @@
   margin-left: auto;
   @include sm-down {
     padding: 7px 11px;
+    max-width: 250px;
   }
 }
 
@@ -345,6 +346,7 @@
   backdrop-filter: blur(50px);
   @include sm-down {
     padding: 7px 11px;
+    max-width: 250px;
   }
 }
 .option {

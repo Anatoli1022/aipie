@@ -128,7 +128,7 @@ const Consultation = () => {
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
             {messages.map((msg, index) => (
-              <span key={index} className={cx(`${msg?.sender}`)}>
+              <span key={index} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>
             ))}
