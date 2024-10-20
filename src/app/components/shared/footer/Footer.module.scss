@@ -6,7 +6,6 @@
   position: relative;
   padding-top: 72px;
   overflow: hidden;
-  // padding-bottom: 30px;
 
   border-radius: 64px 64px 0px 0px;
   margin-top: 200px;
@@ -15,7 +14,7 @@
     0px -32px 250px 120px #2622a8;
 
   @include md-down {
-    padding-top: 0;
+    padding-top: 30px;
     padding-bottom: 300px;
   }
 }
@@ -41,9 +40,6 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  @include md-down {
-    padding-top: 30px;
-  }
 }
 .list {
   display: flex;
@@ -84,9 +80,7 @@
   min-width: 100%;
   border: none;
   z-index: -1;
-  @include md-down {
-    margin-top: -50px;
-  }
+  margin-top: -40px;
 }
 
 // .background {

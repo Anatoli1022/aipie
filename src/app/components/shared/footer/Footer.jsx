@@ -42,7 +42,7 @@ const Footer = () => {
             src="https://my.spline.design/orb-8299981a83a774fdca6cd088c20d3d69/"
             width="100%"
             height="100%"
-            style={{ minHeight: '610px' }}
+            style={{ minHeight: '650px' }}
           ></iframe>
         </div>
         {/* <Image
