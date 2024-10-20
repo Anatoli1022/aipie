@@ -50,17 +50,17 @@
 .list {
   margin-top: 64px;
   display: grid;
-  grid-template-columns: repeat(14, 280px);
+  grid-template-columns: repeat(21, 280px);
   column-gap: 14px;
   justify-content: space-between;
   @include md-down {
-    grid-template-columns: repeat(14, 237px);
+    grid-template-columns: repeat(21, 237px);
     margin-top: 40px;
     column-gap: 28px;
   }
   @include sm-down {
     column-gap: 24px;
-    grid-template-columns: repeat(14, 126px);
+    grid-template-columns: repeat(21, 126px);
   }
 }
 
