@@ -1,3 +1,5 @@
+'use client';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import styles from './Hero.module.scss';
@@ -6,6 +8,19 @@ import arrow from '../../../assets/arrow.svg';
 const cx = classNames.bind(styles);
 
 const Hero = () => {
+  const fullText = 'ИИ, который консультирует';
+  const [displayedText, setDisplayedText] = useState('');
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (index < fullText.length) {
+      const interval = setInterval(() => {
+        setDisplayedText((prev) => prev + fullText[index]);
+        setIndex((prev) => prev + 1);
+      }, 100);
+
+      return () => clearInterval(interval);
+    }
+  }, [index, fullText]);
   return (
     <section className={cx('hero')}>
       <div className={cx('container')}>
@@ -16,7 +31,11 @@ const Hero = () => {
           </p>
 
           <div className={cx('wrapper')}>
-            <span className={cx('ai-text')}>ИИ, который консультирует</span>{' '}
+            <span className={cx('ai-text')}>
+              {displayedText.split('').map((char, idx) => (
+                <span key={idx}>{char === ' ' ? '\u00A0' : char}</span>
+              ))}
+            </span>
             <Image
               src={border}
               className={cx('image')}
@@ -29,7 +48,6 @@ const Hero = () => {
           <button className={cx('button')} type="button">
             <Image
               src={arrow}
-              className={cx('image')}
               alt=""
               width={40}
               height={40}

@@ -66,6 +66,8 @@
   display: flex;
   column-gap: 16px;
   align-items: center;
+  position: relative;
+  overflow: hidden;
   @include md-down {
     margin-top: 45px;
   }
@@ -73,8 +75,14 @@
     margin-top: 30px;
   }
 }
+
+.image {
+  z-index: 1;
+}
+
 .ai-text {
   font-size: 48px;
+  white-space: nowrap;
   font-weight: 500;
   letter-spacing: -0.48px;
   @include md-down {
@@ -84,6 +92,22 @@
   @include sm-down {
     letter-spacing: -0.24px;
     font-size: 24px;
+  }
+}
+.ai-text span {
+  opacity: 0;
+  display: inline-block;
+  animation: fadeInLetter 0.1s forwards;
+}
+
+@keyframes fadeInLetter {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
