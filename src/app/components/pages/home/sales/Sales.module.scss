@@ -55,8 +55,10 @@
   border-radius: 16px;
   border: 1px solid #172c50;
   background: rgba(15, 16, 33, 0.28);
+
   backdrop-filter: blur(50px);
   padding: 36px 32px;
+  mix-blend-mode: color-dodge;
   display: flex;
   flex-direction: column;
 
@@ -157,7 +159,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  // mix-blend-mode: color-dodge;
+  z-index: 1;
 }
 
 .background {
