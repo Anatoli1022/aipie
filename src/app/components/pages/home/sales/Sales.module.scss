@@ -3,7 +3,11 @@
 .sales {
   margin-top: 100px;
   position: relative;
-
+  background: linear-gradient(
+    180deg,
+    rgba(1, 1, 1, 0.1) 0%,
+    rgba(73, 0, 170, 0) 100%
+  );
   @include md-down {
     z-index: 1;
     margin-top: 30px;

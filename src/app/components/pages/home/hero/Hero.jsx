@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './Hero.module.scss';
 import border from './images/border.webp';
 import arrow from '../../../assets/arrow.svg';
+import background from './images/backgroundHero.jpg';
 const cx = classNames.bind(styles);
 
 const Hero = () => {
@@ -82,14 +83,20 @@ const Hero = () => {
             <span className={cx('button-text')}>Попробовать Aipie</span>
           </button>
         </div>
-
         <iframe
           className={cx('iframe')}
           src="https://my.spline.design/-f4ec32c28f52a6868167ac78ea55bb63/"
           width="100%"
           height="100%"
           style={{ minHeight: '1000px' }}
-        ></iframe>
+        ></iframe>{' '}
+        <Image
+          src={background}
+          className={cx('background')}
+          alt=""
+          loading="eager"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );
