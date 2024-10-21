@@ -13,8 +13,6 @@
   display: flex;
   position: relative;
   align-items: center;
-  // overflow: hidden;
-  // max-height: 820px;
   justify-content: space-between;
   @include lg-down {
     flex-direction: column;
@@ -31,11 +29,11 @@
 .triagle {
   max-width: 100%;
   mix-blend-mode: color-dodge;
-  z-index: -1;
   margin-top: -200px;
-  // @include xl-down {
-  //   margin-bottom: -140px;
-  // }
+  @include xl-down {
+    max-height: 1000px;
+    margin-top: 0;
+  }
 
   @include lg-down {
     display: none;
