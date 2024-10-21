@@ -50,7 +50,7 @@
 .list {
   margin-top: 64px;
   display: flex;
-  column-gap: 40px;
+  column-gap: 64px;
   justify-content: space-between;
   @include md-down {
     margin-top: 40px;

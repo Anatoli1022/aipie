@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Footer.module.scss';
 import logo from '../../assets/logo.svg';
-// import background from '../../assets/background-footer.webp';
+import background from '../../assets/background-footer.webp';
 const cx = classNames.bind(styles);
 const Footer = () => {
   return (
@@ -35,7 +35,6 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        {/*  if you need 3d  */}
         <div className={cx('iframe-container')}>
           <iframe
             className={cx('iframe')}
@@ -45,13 +44,13 @@ const Footer = () => {
             style={{ minHeight: '650px' }}
           ></iframe>
         </div>
-        {/* <Image
+        <Image
           src={background}
           className={cx('background')}
           alt=""
           aria-hidden="true"
           loading="lazy"
-        /> */}
+        />
       </div>
       <div className={cx('copyright')}>
         *Meta Platforms Inc. признана в РФ экстремистской
