@@ -49,18 +49,15 @@
 
 .list {
   margin-top: 64px;
-  display: grid;
-  grid-template-columns: repeat(21, 280px);
-  column-gap: 14px;
+  display: flex;
+  column-gap: 40px;
   justify-content: space-between;
   @include md-down {
-    grid-template-columns: repeat(21, 237px);
     margin-top: 40px;
     column-gap: 28px;
   }
   @include sm-down {
     column-gap: 24px;
-    grid-template-columns: repeat(21, 126px);
   }
 }
 
