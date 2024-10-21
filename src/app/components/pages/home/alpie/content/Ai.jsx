@@ -6,10 +6,10 @@ const Ai = () => {
     <div className={cx('iframe-container')}>
       <iframe
         className={cx('iframe')}
-        src="https://my.spline.design/meeet-2b7cd781ad76a3d655b40fdb3b67c8d3/"
+        src="https://my.spline.design/meeetcopycopy-6428ca4ce0376599b246b0557dd4e371/"
         width="100%"
         height="100%"
-        style={{ minHeight: '290px' }}
+        style={{ minHeight: '490px' }}
       ></iframe>
     </div>
   );
