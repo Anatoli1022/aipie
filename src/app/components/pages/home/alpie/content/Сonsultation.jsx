@@ -24,38 +24,47 @@ const Consultation = () => {
       {
         sender: 'send-message',
         text: 'Хотел бы приобрести офисный стул',
+        id: 1,
       },
       {
         sender: 'bot-message',
         text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?',
+        id: 2,
       },
       {
         sender: 'send-message',
         text: 'Нужен стул для длительного сидения, чтобы спина не болела',
+        id: 3,
       },
       {
         sender: 'bot-message',
         text: 'Ага, понял, тогда рекомендую нашу модель ErgoMaster Pro — она специально разработана для поддержки позвоночника при долгой работе. Кстати, к этой модели мы можем предложить подставку для ног с регулировкой, что обеспечит еще больший комфорт при долгом нахождении в кресле.',
+        id: 4,
       },
       {
         sender: 'send-message',
         text: 'Интересно. Сколько стоит подставка?',
+        id: 5,
       },
       {
         sender: 'bot-message',
         text: 'Стоимость подставки всего 1500 рублей, и вкупе с креслом она идеально улучшит вашу рабочую эргономику. Если закажете прямо сейчас, я могу предложить вам скидку 10% на комплект.',
+        id: 6,
       },
       {
         sender: 'send-message',
         text: 'Здорово, а какие сроки доставки?',
+        id: 7,
       },
       {
         sender: 'bot-message',
         text: 'Мы можем доставить кресло и подставку уже на следующий день, если вы находитесь в Москве или в ближайшем Подмосковье. А если вы за пределами этих регионов, доставка займет от 2 до 5 дней.',
+        id: 8,
       },
       {
         sender: 'send-message',
         text: 'Отлично, беру кресло и подставку!',
+        id: 9,
       },
     ],
     [],
@@ -63,7 +72,7 @@ const Consultation = () => {
 
   useEffect(() => {
     if (inView) {
-      let messageIndex = messages.length;
+      let messageIndex = messages.length - 1;
       //  console.log(messageIndex, 'стул');
       const intervalId = setInterval(() => {
         if (messageIndex < messageQueue.length) {
@@ -120,8 +129,8 @@ const Consultation = () => {
               <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg, index) => (
-              <span key={index} className={cx(`${msg?.sender}`, 'message')}>
+            {messages.map((msg) => (
+              <span key={msg?.id} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>
             ))}

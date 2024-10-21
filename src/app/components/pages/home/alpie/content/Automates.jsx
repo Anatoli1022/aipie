@@ -23,46 +23,57 @@ const Automates = () => {
       {
         sender: 'send-message',
         text: 'Нужен насос для подвала, глубина 3 метра, до 500 литров воды.',
+        id: 1,
       },
       {
         sender: 'bot-message',
         text: 'Добрый день, понял. Для таких объемов подойдет дренажный насос мощностью около 500 Вт с производительностью 8000 л/ч. Какие-то доп. функции нужны?',
+        id: 2,
       },
       {
         sender: 'send-message',
         text: 'Желательно, чтобы был автоматический выключатель, когда вода откачана.',
+        id: 3,
       },
       {
         sender: 'bot-message',
         text: 'Тогда подойдет WaterMaster 500 с поплавковым выключателем и защитой от сухого хода подойдет. Стандартный разъем, шнур 10 м.',
+        id: 4,
       },
       {
         sender: 'send-message',
         text: 'Цена?',
+        id: 5,
       },
       {
         sender: 'bot-message',
         text: '7500 ₽. Рекомендую шланг длиной 20 метров из прочного ПВХ с внутренним диаметром 32 мм — идеально подходит для такого насоса. Цена на него 1200 рублей, и с учетом скидки за комплект это будет 1080 рублей. Закажете вместе с насосом?',
+        id: 6,
       },
       {
         sender: 'send-message',
         text: 'Да, давайте так. И сколько еще будет в пути? Рассчитайте, пожалуйста, доставку до Иркутска',
+        id: 7,
       },
       {
         sender: 'bot-message',
         text: 'По поводу доставки сейчас уточню, ожидайте.',
+        id: 8,
       },
       {
         sender: 'bot-message',
         text: 'Доставка до пункта ПЭК в Иркутск  2700',
+        id: 9,
       },
       {
         sender: 'send-message',
         text: 'А в пути сколько он будет примерно? ',
+        id: 10,
       },
       {
         sender: 'bot-message',
         text: 'В пути будет до 5 дней',
+        id: 11,
       },
     ],
     [],
@@ -70,7 +81,7 @@ const Automates = () => {
 
   useEffect(() => {
     if (inView) {
-      let messageIndex = messages.length;
+      let messageIndex = messages.length - 1;
       //   console.log(messageIndex, 'насос');
       const intervalId = setInterval(() => {
         if (messageIndex < messageQueue.length) {
@@ -102,8 +113,8 @@ const Automates = () => {
               <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg, index) => (
-              <span key={index} className={cx(`${msg?.sender}`, 'message')}>
+            {messages.map((msg) => (
+              <span key={msg?.id} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>
             ))}

@@ -23,27 +23,33 @@ const Advises = () => {
       {
         sender: 'send-message',
         text: 'Добрый день, хотел бы сделать возврат товара',
+        id: 1,
       },
       {
         sender: 'bot-message',
         text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
+        id: 2,
       },
       {
         sender: 'option',
         text: 'Витамин D3',
         option: true,
+        id: 3,
       },
       {
         sender: 'option',
         text: 'Омега 3',
+        id: 4,
       },
       {
         sender: 'bot-message',
         text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
+        id: 5,
       },
       {
         sender: 'send-message',
         text: 'Отлично спасибо!',
+        id: 6,
       },
     ],
     [],
@@ -51,7 +57,7 @@ const Advises = () => {
 
   useEffect(() => {
     if (inView) {
-      let messageIndex = messages.length;
+      let messageIndex = messages.length - 1;
       // console.log(messageIndex, 'возврат');
       const intervalId = setInterval(() => {
         if (messageIndex < messageQueue.length) {
@@ -84,8 +90,8 @@ const Advises = () => {
               <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg, index) => (
-              <span key={index} className={cx(`${msg?.sender}`, 'message')}>
+            {messages.map((msg) => (
+              <span key={msg?.id} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>
             ))}
