@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useInView } from 'react-intersection-observer';
+// import { useInView } from 'react-intersection-observer';
 import styles from './Styles.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
@@ -13,10 +13,10 @@ import Ai from './Ai';
 const cx = classNames.bind(styles);
 
 const Consultation = () => {
-  const [messages, setMessages] = useState([]);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
+  // const [messages, setMessages] = useState([]);
+  // const { ref, inView } = useInView({
+  //   triggerOnce: true,
+  // });
 
   const messageListRef = useRef(null);
   const messageQueue = useMemo(
@@ -70,31 +70,34 @@ const Consultation = () => {
     [],
   );
 
-  useEffect(() => {
-    if (inView) {
-      let messageIndex = messages.length - 1;
-      //  console.log(messageIndex, 'стул');
-      const intervalId = setInterval(() => {
-        if (messageIndex < messageQueue.length) {
-          setMessages((prev) => [...prev, messageQueue[messageIndex]]);
-          messageIndex++;
-        } else {
-          clearInterval(intervalId);
-        }
-      }, 3000);
+  // useEffect(() => {
+  //   if (inView) {
+  //     let messageIndex = messages.length - 1;
+  //     //  console.log(messageIndex, 'стул');
+  //     const intervalId = setInterval(() => {
+  //       if (messageIndex < messageQueue.length) {
+  //         setMessages((prev) => [...prev, messageQueue[messageIndex]]);
+  //         messageIndex++;
+  //       } else {
+  //         clearInterval(intervalId);
+  //       }
+  //     }, 3000);
 
-      return () => clearInterval(intervalId);
-    }
-  }, [inView, messageQueue, messages.length]);
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [inView, messageQueue, messages.length]);
 
-  useEffect(() => {
-    if (messageListRef.current) {
-      messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
-    }
-  }, [messages]);
+  // useEffect(() => {
+  //   if (messageListRef.current) {
+  //     messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+  //   }
+  // }, [messages]);
 
   return (
-    <div className={cx('content-wrapper')} ref={ref}>
+    <div
+      className={cx('content-wrapper')}
+      // ref={ref}
+    >
       <div className={cx('wrapper')}>
         <span className={cx('text')}>Виджет на сайт</span>
         <h3 className={cx('title')}>Консультирует о товарах и услугах</h3>
@@ -124,12 +127,15 @@ const Consultation = () => {
           <h3 className={cx('title-form')}>Aipie</h3>
 
           {/* Блок переписки */}
-          <div className={cx('message-list')} ref={messageListRef}>
+          <div
+            className={cx('message-list')}
+            //  ref={messageListRef}
+          >
             <div>
               <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messages.map((msg) => (
+            {messageQueue.map((msg) => (
               <span key={msg?.id} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>

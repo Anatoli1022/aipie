@@ -49,40 +49,36 @@ const Hero = () => {
   return (
     <section className={cx('hero')}>
       <div className={cx('container')}>
-        <div className={cx('wrapper-content')}>
-          <h1 className={cx('title')}>Aipie</h1>
-          <p className={cx('text')}>
-            AI сотрудник – ваше конкурентное преимущество, всегда на связи 24/7
-          </p>
-
-          <div className={cx('wrapper')}>
-            <span className={cx('ai-text')}>
-              {staticText}
-              {displayedWord.split('').map((char, index) => (
-                <span key={index}>{char === ' ' ? '\u00A0' : char}</span>
-              ))}
-            </span>
-            <Image
-              src={border}
-              className={cx('image')}
-              alt=""
-              aria-hidden="true"
-              loading="eager"
-            />
-          </div>
-
-          <button className={cx('button')} type="button">
-            <Image
-              src={arrow}
-              alt=""
-              width={40}
-              height={40}
-              loading="lazy"
-              aria-hidden="true"
-            />
-            <span className={cx('button-text')}>Попробовать Aipie</span>
-          </button>
+        <h1 className={cx('title')}>Aipie</h1>
+        <p className={cx('text')}>
+          AI сотрудник – ваше конкурентное преимущество, всегда на связи 24/7
+        </p>
+        <div className={cx('wrapper')}>
+          <span className={cx('ai-text')}>
+            {staticText}
+            {displayedWord.split('').map((char, index) => (
+              <span key={index}>{char === ' ' ? '\u00A0' : char}</span>
+            ))}
+          </span>
+          <Image
+            src={border}
+            className={cx('image')}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+          />
         </div>
+        <button className={cx('button')} type="button">
+          <Image
+            src={arrow}
+            alt=""
+            width={40}
+            height={40}
+            loading="lazy"
+            aria-hidden="true"
+          />
+          <span className={cx('button-text')}>Попробовать Aipie</span>
+        </button>
         <iframe
           className={cx('iframe')}
           src="https://my.spline.design/-f4ec32c28f52a6868167ac78ea55bb63/"

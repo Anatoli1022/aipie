@@ -1,7 +1,7 @@
 @import '../../../../styles/variables.scss';
 
 .sales {
-  margin-top: 100px;
+  margin-top: 200px;
   position: relative;
   background: linear-gradient(
     180deg,
@@ -42,6 +42,7 @@
 .wrapper-content {
   margin-top: 64px;
   display: grid;
+
   grid-auto-rows: auto;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -136,6 +137,7 @@
   font-size: 48px;
   font-weight: 400;
   line-height: 56px;
+  mix-blend-mode: normal;
   letter-spacing: 0.48px;
   @include md-down {
     font-size: 36px;
@@ -150,6 +152,7 @@
 
 .text {
   font-size: 20px;
+  mix-blend-mode: normal;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.2px;
@@ -161,9 +164,21 @@
 
 .image {
   position: absolute;
-  top: 0;
-  right: 0;
+  right: -330.098px;
+  top: -178px;
   z-index: -1;
+  max-width: 650px;
+  max-height: 650px;
+  animation: image 200s infinite linear;
+
+  @keyframes image {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
 }
 
 .background {
@@ -173,7 +188,7 @@
 
   filter: blur(350px);
   bottom: 0;
-  z-index: -1;
+  z-index: -2;
   right: 0;
 }
 
@@ -182,13 +197,13 @@
   position: absolute;
 
   filter: blur(350px);
-  top: -500px;
+  top: 0;
   left: 0;
 }
 .background-third {
   position: absolute;
   filter: blur(350px);
-  top: -200px;
-  z-index: -3;
+  top: -250px;
+  z-index: 1;
   right: 0px;
 }

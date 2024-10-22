@@ -29,7 +29,7 @@
 .triagle {
   max-width: 100%;
   mix-blend-mode: color-dodge;
-  margin-top: -200px;
+  height: 100%;
   @include xl-down {
     max-height: 1000px;
     margin-top: 0;
