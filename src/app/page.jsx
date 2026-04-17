@@ -8,10 +8,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Sales />
-      <Integrated />
+      <div id="advantages">
+        <Sales />
+      </div>
+      <div id="integrations">
+        <Integrated />
+      </div>
       <Work />
-      <Alpie />
+      <div id="cases">
+        <Alpie />
+      </div>
     </>
   );
 }

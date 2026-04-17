@@ -51,6 +51,88 @@
   font-size: 22px;
   color: $color-white;
   padding: 8px 16px;
+  position: relative;
+  transition: color $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 2px;
+    height: 1px;
+    background: $color-green;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform $transition-base;
+  }
+
+  &:hover {
+    color: $color-green;
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(16px);
+  z-index: 0;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+
+  @include md-down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mobile-menu--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.mobile-link {
+  font-size: 28px;
+  color: $color-white;
+  transition: color $transition-base;
+
+  &:hover,
+  &:focus {
+    color: $color-green;
+  }
+}
+
+.mobile-cta {
+  margin-top: 12px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1px solid #f9f9f9;
+  background: #010101;
+  color: $color-white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-white;
+    color: #010101;
+  }
 }
 
 .button {

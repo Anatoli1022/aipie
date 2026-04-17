@@ -1,3 +1,5 @@
+'use client';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import Image from 'next/image';
@@ -8,38 +10,46 @@ import menu from './images/menu.svg';
 
 const cx = classNames.bind(styles);
 
+const NAV_LINKS = [
+  { href: '#advantages', label: 'Преимущества' },
+  { href: '#integrations', label: 'Интеграции' },
+  { href: '#cases', label: 'Кейсы' },
+];
+
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  const close = () => setIsOpen(false);
+
   return (
     <header className={cx('header')}>
       <div className={cx('container')}>
         <nav className={cx('navigation')}>
           <div>
-            <Link href="/">
+            <Link href="/" onClick={close}>
               <Image
                 src={logo}
                 className={cx('logo')}
-                alt=""
-                loading="lazy"
-                aria-hidden="true"
+                alt="Aipie"
+                loading="eager"
               />
             </Link>
           </div>
           <ul className={cx('list')}>
-            <li>
-              <Link href="/" className={cx('list-link')}>
-                Преимущества
-              </Link>
-            </li>
-            <li>
-              <Link href="/" className={cx('list-link')}>
-                Интеграции
-              </Link>
-            </li>
-            <li>
-              <Link href="/" className={cx('list-link')}>
-                Кейсы
-              </Link>
-            </li>
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className={cx('list-link')}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <button className={cx('button')} type="button">
             <Image
@@ -52,7 +62,13 @@ const Header = () => {
             />
             <span className={cx('button-text')}>Попробовать Aipie</span>
           </button>
-          <button className={cx('menu')}>
+          <button
+            className={cx('menu')}
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={isOpen}
+          >
             <Image
               src={menu}
               alt=""
@@ -63,6 +79,33 @@ const Header = () => {
             />
           </button>
         </nav>
+      </div>
+      <div
+        className={cx('mobile-menu', { 'mobile-menu--open': isOpen })}
+        aria-hidden={!isOpen}
+      >
+        <ul className={cx('mobile-list')}>
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={cx('mobile-link')}
+                onClick={close}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <button
+              type="button"
+              className={cx('mobile-cta')}
+              onClick={close}
+            >
+              Попробовать Aipie
+            </button>
+          </li>
+        </ul>
       </div>
     </header>
   );

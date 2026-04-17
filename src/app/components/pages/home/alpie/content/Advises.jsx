@@ -1,7 +1,6 @@
 'use client';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import styles from './Styles.module.scss';
-// import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 import manyStars from '../../../../assets/manyStars.svg';
@@ -9,117 +8,62 @@ import star from '../../../../assets/star.svg';
 import lightning from '../../../../assets/lightning.svg';
 import arrowButton from '../../../../assets/arrowButton.svg';
 import Ai from './Ai';
+import useAnimatedChat from './useAnimatedChat';
 
 const cx = classNames.bind(styles);
 
 const Advises = () => {
-  // const [messages, setMessages] = useState([]);
-  // const { ref, inView } = useInView({
-  //   triggerOnce: true,
-  // });
-  // const advisesRef = useRef(null);
   const messageQueue = useMemo(
     () => [
-      {
-        sender: 'send-message',
-        text: 'Добрый день, хотел бы сделать возврат товара',
-        id: 1,
-      },
-      {
-        sender: 'bot-message',
-        text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
-        id: 2,
-      },
-      {
-        sender: 'option',
-        text: 'Витамин D3',
-        option: true,
-        id: 3,
-      },
-      {
-        sender: 'option',
-        text: 'Омега 3',
-        id: 4,
-      },
-      {
-        sender: 'bot-message',
-        text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
-        id: 5,
-      },
-      {
-        sender: 'send-message',
-        text: 'Отлично спасибо!',
-        id: 6,
-      },
+      { sender: 'send-message', text: 'Добрый день, хотел бы сделать возврат товара', id: 1 },
+      { sender: 'bot-message', text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:', id: 2 },
+      { sender: 'option', text: 'Витамин D3', option: true, id: 3 },
+      { sender: 'option', text: 'Омега 3', id: 4 },
+      { sender: 'bot-message', text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!', id: 5 },
+      { sender: 'send-message', text: 'Отлично спасибо!', id: 6 },
     ],
     [],
   );
 
-  // useEffect(() => {
-  //   if (inView) {
-  //     let messageIndex = messages.length - 1;
-  //     // console.log(messageIndex, 'возврат');
-  //     const intervalId = setInterval(() => {
-  //       if (messageIndex < messageQueue.length) {
-  //         setMessages((prev) => [...prev, messageQueue[messageIndex]]);
-  //         messageIndex++;
-  //       } else {
-  //         clearInterval(intervalId);
-  //       }
-  //     }, 3000);
-
-  //     return () => clearInterval(intervalId);
-  //   }
-  // }, [inView, messageQueue, messages.length]);
-
-  // useEffect(() => {
-  //   if (advisesRef.current) {
-  //     advisesRef.current.scrollTop = advisesRef.current.scrollHeight;
-  //   }
-  // }, [messages]);
+  const { ref, listRef, messages, input, setInput, handleSubmit, isBotTyping } =
+    useAnimatedChat(messageQueue, 'Принято! Оформлю возврат и пришлю ярлык на вашу почту.');
 
   return (
-    <div
-      className={cx('content-wrapper')}
-      // ref={ref}
-    >
+    <div className={cx('content-wrapper')} ref={ref}>
       <div className={cx('wrapper-form')}>
         <div className={cx('wrapper-form', 'content-form')}>
           <h3 className={cx('title-form')}>Aipie</h3>
 
-          {/* Блок переписки */}
-          <div
-            className={cx('message-list')}
-            // ref={advisesRef}
-          >
+          <div className={cx('message-list')} ref={listRef}>
             <div>
               <Ai />
               <p className={cx('text-ai')}>Чем я могу помочь?</p>
             </div>
-            {messageQueue.map((msg) => (
+            {messages.map((msg) => (
               <span key={msg?.id} className={cx(`${msg?.sender}`, 'message')}>
                 {msg?.text}
               </span>
             ))}
+            {isBotTyping && (
+              <span className={cx('typing')} aria-label="Assistant is typing">
+                <span /> <span /> <span />
+              </span>
+            )}
           </div>
 
-          <div className={cx('input-wrapper')}>
+          <form className={cx('input-wrapper')} onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Сообщение"
               className={cx('input')}
-              disabled
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              aria-label="Введите сообщение"
             />
-            <button type="button" className={cx('button-form')} disabled>
-              <Image
-                src={arrowButton}
-                alt=""
-                loading="lazy"
-                aria-hidden="true"
-                className={cx('button-image')}
-              />
+            <button type="submit" className={cx('button-form')} aria-label="Отправить">
+              <Image src={arrowButton} alt="" loading="lazy" aria-hidden="true" className={cx('button-image')} />
             </button>
-          </div>
+          </form>
         </div>
       </div>
 

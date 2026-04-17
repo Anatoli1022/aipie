@@ -19,17 +19,17 @@ const Footer = () => {
           />
           <ul className={cx('list')}>
             <li>
-              <Link href="/" className={cx('list-link')}>
+              <Link href="#advantages" className={cx('list-link')}>
                 Преимущества
               </Link>
             </li>
             <li>
-              <Link href="/" className={cx('list-link')}>
+              <Link href="#integrations" className={cx('list-link')}>
                 Интеграции
               </Link>
             </li>
             <li>
-              <Link href="/" className={cx('list-link')}>
+              <Link href="#cases" className={cx('list-link')}>
                 Кейсы
               </Link>
             </li>
