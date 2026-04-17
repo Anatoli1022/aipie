@@ -215,6 +215,7 @@
   top: -130px;
   min-width: 300px;
   border: none;
+  pointer-events: none;
   transform: scale(0.7);
 
   @include sm-down {

@@ -20,8 +20,11 @@ export default function useAnimatedChat(queue, botReply = 'Спасибо за �
         clearInterval(interval);
         return;
       }
-      setMessages((prev) => [...prev, queue[i]]);
+      const next = queue[i];
       i += 1;
+      setMessages((prev) =>
+        prev.some((m) => m.id === next.id) ? prev : [...prev, next],
+      );
     }, REVEAL_DELAY);
     return () => clearInterval(interval);
   }, [inView, queue]);

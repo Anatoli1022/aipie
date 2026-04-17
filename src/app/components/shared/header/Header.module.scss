@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 20;
   right: 0;
   padding: 48px 0 24px 0;
   border-bottom: 1px solid #fff;
@@ -78,10 +78,9 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  top: 0;
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.96);
   backdrop-filter: blur(16px);
-  z-index: 0;
+  z-index: 10;
   display: none;
   opacity: 0;
   pointer-events: none;
@@ -109,7 +108,7 @@
 .mobile-link {
   font-size: 28px;
   color: $color-white;
-  transition: color $transition-base;
+  transition: $transition-base;
 
   &:hover,
   &:focus {
@@ -127,7 +126,7 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: background $transition-base, color $transition-base;
+  transition: $transition-base;
 
   &:hover {
     background: $color-white;

@@ -29,6 +29,7 @@ const Header = () => {
   const close = () => setIsOpen(false);
 
   return (
+    <>
     <header className={cx('header')}>
       <div className={cx('container')}>
         <nav className={cx('navigation')}>
@@ -80,6 +81,7 @@ const Header = () => {
           </button>
         </nav>
       </div>
+    </header>
       <div
         className={cx('mobile-menu', { 'mobile-menu--open': isOpen })}
         aria-hidden={!isOpen}
@@ -107,7 +109,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-    </header>
+    </>
   );
 };
 
