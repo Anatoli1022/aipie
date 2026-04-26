@@ -16,21 +16,52 @@ const cx = classNames.bind(styles);
 const Automates = () => {
   const messageQueue = useMemo(
     () => [
-      { sender: 'send-message', text: 'Нужен насос для подвала, глубина 3 метра, до 500 литров воды.', id: 1 },
-      { sender: 'bot-message', text: 'Добрый день, понял. Для таких объемов подойдет дренажный насос мощностью около 500 Вт с производительностью 8000 л/ч. Какие-то доп. функции нужны?', id: 2 },
-      { sender: 'send-message', text: 'Желательно автоматический выключатель, когда вода откачана.', id: 3 },
-      { sender: 'bot-message', text: 'Тогда подойдет WaterMaster 500 с поплавковым выключателем и защитой от сухого хода. Шнур 10 м.', id: 4 },
+      {
+        sender: 'send-message',
+        text: 'Нужен насос для подвала, глубина 3 метра, до 500 литров воды.',
+        id: 1,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Добрый день, понял. Для таких объемов подойдет дренажный насос мощностью около 500 Вт с производительностью 8000 л/ч. Какие-то доп. функции нужны?',
+        id: 2,
+      },
+      {
+        sender: 'send-message',
+        text: 'Желательно автоматический выключатель, когда вода откачана.',
+        id: 3,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Тогда подойдет WaterMaster 500 с поплавковым выключателем и защитой от сухого хода. Шнур 10 м.',
+        id: 4,
+      },
       { sender: 'send-message', text: 'Цена?', id: 5 },
-      { sender: 'bot-message', text: '7500 ₽. Рекомендую также шланг 20 м — 1080 ₽ с учётом комплектной скидки. Закажете вместе?', id: 6 },
-      { sender: 'send-message', text: 'Да. Рассчитайте доставку до Иркутска.', id: 7 },
+      {
+        sender: 'bot-message',
+        text: '7500 ₽. Рекомендую также шланг 20 м — 1080 ₽ с учётом комплектной скидки. Закажете вместе?',
+        id: 6,
+      },
+      {
+        sender: 'send-message',
+        text: 'Да. Рассчитайте доставку до Иркутска.',
+        id: 7,
+      },
       { sender: 'bot-message', text: 'Сейчас уточню, ожидайте.', id: 8 },
-      { sender: 'bot-message', text: 'Доставка до пункта ПЭК в Иркутск — 2700 ₽, срок до 5 дней.', id: 9 },
+      {
+        sender: 'bot-message',
+        text: 'Доставка до пункта ПЭК в Иркутск — 2700 ₽, срок до 5 дней.',
+        id: 9,
+      },
     ],
     [],
   );
 
   const { ref, listRef, messages, input, setInput, handleSubmit, isBotTyping } =
-    useAnimatedChat(messageQueue, 'Принято! Формирую заказ и пришлю детали доставки.');
+    useAnimatedChat(
+      messageQueue,
+      'Принято! Формирую заказ и пришлю детали доставки.',
+    );
 
   return (
     <div className={cx('content-wrapper')} ref={ref}>
@@ -64,8 +95,18 @@ const Automates = () => {
               onChange={(e) => setInput(e.target.value)}
               aria-label="Введите сообщение"
             />
-            <button type="submit" className={cx('button-form')} aria-label="Отправить">
-              <Image src={arrowButton} alt="" loading="lazy" aria-hidden="true" className={cx('button-image')} />
+            <button
+              type="submit"
+              className={cx('button-form')}
+              aria-label="Отправить"
+            >
+              <Image
+                src={arrowButton}
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+                className={cx('button-image')}
+              />
             </button>
           </form>
         </div>

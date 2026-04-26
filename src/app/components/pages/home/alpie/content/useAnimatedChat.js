@@ -5,7 +5,10 @@ import { useInView } from 'react-intersection-observer';
 const REVEAL_DELAY = 1400;
 const BOT_REPLY_DELAY = 900;
 
-export default function useAnimatedChat(queue, botReply = 'Спасибо за сообщение! Сейчас уточню детали и вернусь с ответом.') {
+export default function useAnimatedChat(
+  queue,
+  botReply = 'Спасибо за сообщение! Сейчас уточню детали и вернусь с ответом.',
+) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isBotTyping, setIsBotTyping] = useState(false);
@@ -31,7 +34,10 @@ export default function useAnimatedChat(queue, botReply = 'Спасибо за �
 
   useEffect(() => {
     if (listRef.current) {
-      listRef.current.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' });
+      listRef.current.scrollTo({
+        top: listRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
     }
   }, [messages, isBotTyping]);
 
@@ -44,13 +50,16 @@ export default function useAnimatedChat(queue, botReply = 'Спасибо за �
       setMessages((prev) => [...prev, userMsg]);
       setInput('');
       setIsBotTyping(true);
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { sender: 'bot-message', text: botReply, id: `b-${Date.now()}` },
-        ]);
-        setIsBotTyping(false);
-      }, BOT_REPLY_DELAY + Math.min(1200, text.length * 30));
+      setTimeout(
+        () => {
+          setMessages((prev) => [
+            ...prev,
+            { sender: 'bot-message', text: botReply, id: `b-${Date.now()}` },
+          ]);
+          setIsBotTyping(false);
+        },
+        BOT_REPLY_DELAY + Math.min(1200, text.length * 30),
+      );
     },
     [input, botReply],
   );

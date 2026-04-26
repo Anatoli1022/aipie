@@ -15,18 +15,33 @@ const cx = classNames.bind(styles);
 const Advises = () => {
   const messageQueue = useMemo(
     () => [
-      { sender: 'send-message', text: 'Добрый день, хотел бы сделать возврат товара', id: 1 },
-      { sender: 'bot-message', text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:', id: 2 },
+      {
+        sender: 'send-message',
+        text: 'Добрый день, хотел бы сделать возврат товара',
+        id: 1,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Добрый день, вижу, что вы делали два заказа. Пожалуйста, выберите товар, который вы хотите вернуть:',
+        id: 2,
+      },
       { sender: 'option', text: 'Витамин D3', option: true, id: 3 },
       { sender: 'option', text: 'Омега 3', id: 4 },
-      { sender: 'bot-message', text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!', id: 5 },
+      {
+        sender: 'bot-message',
+        text: 'Ярлык для возврата был отправлен на электронную почту, указанную в вашем аккаунте. Если вам нужно что-то еще, пожалуйста, дайте знать. Всего хорошего!',
+        id: 5,
+      },
       { sender: 'send-message', text: 'Отлично спасибо!', id: 6 },
     ],
     [],
   );
 
   const { ref, listRef, messages, input, setInput, handleSubmit, isBotTyping } =
-    useAnimatedChat(messageQueue, 'Принято! Оформлю возврат и пришлю ярлык на вашу почту.');
+    useAnimatedChat(
+      messageQueue,
+      'Принято! Оформлю возврат и пришлю ярлык на вашу почту.',
+    );
 
   return (
     <div className={cx('content-wrapper')} ref={ref}>
@@ -60,8 +75,18 @@ const Advises = () => {
               onChange={(e) => setInput(e.target.value)}
               aria-label="Введите сообщение"
             />
-            <button type="submit" className={cx('button-form')} aria-label="Отправить">
-              <Image src={arrowButton} alt="" loading="lazy" aria-hidden="true" className={cx('button-image')} />
+            <button
+              type="submit"
+              className={cx('button-form')}
+              aria-label="Отправить"
+            >
+              <Image
+                src={arrowButton}
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+                className={cx('button-image')}
+              />
             </button>
           </form>
         </div>

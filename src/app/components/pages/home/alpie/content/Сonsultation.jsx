@@ -15,21 +15,60 @@ const cx = classNames.bind(styles);
 const Consultation = () => {
   const messageQueue = useMemo(
     () => [
-      { sender: 'send-message', text: 'Хотел бы приобрести офисный стул', id: 1 },
-      { sender: 'bot-message', text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?', id: 2 },
-      { sender: 'send-message', text: 'Нужен стул для длительного сидения, чтобы спина не болела', id: 3 },
-      { sender: 'bot-message', text: 'Ага, понял, тогда рекомендую нашу модель ErgoMaster Pro — она специально разработана для поддержки позвоночника при долгой работе. К этой модели мы можем предложить подставку для ног с регулировкой.', id: 4 },
-      { sender: 'send-message', text: 'Интересно. Сколько стоит подставка?', id: 5 },
-      { sender: 'bot-message', text: 'Стоимость подставки всего 1500 рублей. Если закажете прямо сейчас, я могу предложить скидку 10% на комплект.', id: 6 },
-      { sender: 'send-message', text: 'Здорово, а какие сроки доставки?', id: 7 },
-      { sender: 'bot-message', text: 'Доставим уже на следующий день по Москве и области. В другие регионы — от 2 до 5 дней.', id: 8 },
-      { sender: 'send-message', text: 'Отлично, беру кресло и подставку!', id: 9 },
+      {
+        sender: 'send-message',
+        text: 'Хотел бы приобрести офисный стул',
+        id: 1,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Здравствуйте! Подскажите, вам важно, чтобы стул был эргономичным для долгого использования, или вы ищете что-то более бюджетное?',
+        id: 2,
+      },
+      {
+        sender: 'send-message',
+        text: 'Нужен стул для длительного сидения, чтобы спина не болела',
+        id: 3,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Ага, понял, тогда рекомендую нашу модель ErgoMaster Pro — она специально разработана для поддержки позвоночника при долгой работе. К этой модели мы можем предложить подставку для ног с регулировкой.',
+        id: 4,
+      },
+      {
+        sender: 'send-message',
+        text: 'Интересно. Сколько стоит подставка?',
+        id: 5,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Стоимость подставки всего 1500 рублей. Если закажете прямо сейчас, я могу предложить скидку 10% на комплект.',
+        id: 6,
+      },
+      {
+        sender: 'send-message',
+        text: 'Здорово, а какие сроки доставки?',
+        id: 7,
+      },
+      {
+        sender: 'bot-message',
+        text: 'Доставим уже на следующий день по Москве и области. В другие регионы — от 2 до 5 дней.',
+        id: 8,
+      },
+      {
+        sender: 'send-message',
+        text: 'Отлично, беру кресло и подставку!',
+        id: 9,
+      },
     ],
     [],
   );
 
   const { ref, listRef, messages, input, setInput, handleSubmit, isBotTyping } =
-    useAnimatedChat(messageQueue, 'Отличный выбор! Оформляю заказ и пришлю подтверждение.');
+    useAnimatedChat(
+      messageQueue,
+      'Отличный выбор! Оформляю заказ и пришлю подтверждение.',
+    );
 
   return (
     <div className={cx('content-wrapper')} ref={ref}>
@@ -87,8 +126,18 @@ const Consultation = () => {
               onChange={(e) => setInput(e.target.value)}
               aria-label="Введите сообщение"
             />
-            <button type="submit" className={cx('button-form')} aria-label="Отправить">
-              <Image src={arrowButton} alt="" loading="lazy" aria-hidden="true" className={cx('button-image')} />
+            <button
+              type="submit"
+              className={cx('button-form')}
+              aria-label="Отправить"
+            >
+              <Image
+                src={arrowButton}
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+                className={cx('button-image')}
+              />
             </button>
           </form>
         </div>
